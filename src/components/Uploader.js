@@ -49,7 +49,7 @@ function Uploader () {
             <input type="file" onChange={inputFile} />
         </div>
         <div>
-            {(isUrlSet)? <video controls serc={presignedUrl} /> : `No data set`}
+            {(isUrlSet)? <video controls src={presignedUrl}><p>Video playback is not supported</p></video> : `No data set`}
         </div>
         </>
     )

@@ -1,0 +1,14 @@
+{
+  "resourceName": "amplifys3uploader",
+  "policyUUID": "c1afbbc3",
+  "bucketName": "amplifys3uploaderacd4136892c4428f97ee359761acda",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

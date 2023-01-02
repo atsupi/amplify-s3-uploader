@@ -17,6 +17,9 @@
       },
       "storage": {
         "amplifys3uploader": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
       }
     }
   }

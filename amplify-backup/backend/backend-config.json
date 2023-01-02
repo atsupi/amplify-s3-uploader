@@ -1,6 +1,6 @@
 {
   "auth": {
-    "amplifys3uploaderea3e05c3": {
+    "amplifys3uploader8aabda12": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -32,10 +32,5 @@
       "dependsOn": []
     }
   },
-  "hosting": {
-    "S3AndCloudFront": {
-      "service": "S3AndCloudFront",
-      "providerPlugin": "awscloudformation"
-    }
-  }
+  "hosting": {}
 }

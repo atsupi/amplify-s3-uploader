@@ -5,6 +5,7 @@ import { Authenticator, Button } from '@aws-amplify/ui-react';
 import Uploader from './components/Uploader.js'
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom'
 import About from './components/About';
+import SpaceBetween from '@awsui/components-react/space-between'
 
 function App() {
   return (
@@ -19,14 +20,16 @@ function App() {
             </header>
           </div>
           <BrowserRouter>
-          <div className='App-linkbar'>
-            <Link to="/">Home</Link>
-            <Link to ="/about">About</Link>
-          </div>
-          <Routes>
-            <Route path="/" element={<Uploader />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+            <div className='App-linkbar'>
+              <SpaceBetween direction="horizontal" size="xs">
+                <Link to="/">Home</Link>
+                <Link to ="/about">About</Link>
+              </SpaceBetween>
+            </div>
+              <Routes>
+                <Route path="/" element={<Uploader />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
           </BrowserRouter>
           <footer className='App-footer'>
             <p>Hello, {user.username}</p>

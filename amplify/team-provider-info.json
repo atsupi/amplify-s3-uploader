@@ -19,7 +19,10 @@
         "amplifys3uploader": {}
       },
       "hosting": {
-        "S3AndCloudFront": {}
+        "amplifyhosting": {
+          "appId": "d3u39rezb6egmq",
+          "type": "manual"
+        }
       }
     }
   }

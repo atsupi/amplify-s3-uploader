@@ -3,7 +3,9 @@ import { Storage } from 'aws-amplify'
 import { useState } from 'react'
 
 async function getPresignedUrl (key) {
-    const presignedUrl = await Storage.get(key);
+    const presignedUrl = await Storage.get(key, 
+        { level: "public"}
+    );
     console.log(presignedUrl);
     return presignedUrl;
 }
@@ -20,7 +22,7 @@ function Uploader () {
             console.log("Storage.put");
             console.log(event.target.files[0].name);
             console.log(event.target.files[0].type);
-            const upload = Storage.put(event.target.files[0].name, event.target.files[0], {
+            Storage.put(event.target.files[0].name, event.target.files[0], {
                 level: "public", 
                 type: event.target.files[0].type,
                 progressCallback(progress) {
@@ -30,12 +32,16 @@ function Uploader () {
             }).then(result => {
                 console.log(`Completed the upload of ${result.key}`);
                 console.log(event.target.files[0].name);
-                const presignedUrl2 = getPresignedUrl(event.target.files[0].name)
+                getPresignedUrl(event.target.files[0].name)
                   .then(result => {
                     setPresignedUrl(result);
                     setDataName(event.target.files[0].name);
                     setIsUrlSet(true);
+                  }).catch(event => {
+                    console.log("caught event")
+                    console.log(event);    
                   });
+
             }).catch(event => {
                 console.log("caught event")
                 console.log(event);
@@ -49,7 +55,12 @@ function Uploader () {
             <input type="file" onChange={inputFile} />
         </div>
         <div>
-            {(isUrlSet)? <video controls playsInline><source src={presignedUrl} />Not supported format</video> : `No data set`}
+            {
+                (isUrlSet)? 
+                    <video controls playsInline src={presignedUrl} type="video/mp4">
+                        Not supported format
+                    </video> : `${dataName}`
+            }
         </div>
         </>
     )
